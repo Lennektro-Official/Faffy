@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Faffy
+Comment=A no-faff lightweight terminal emulator
+Exec=faffy
+Icon=utilities-terminal
+Terminal=false
+Categories=System;TerminalEmulator;
