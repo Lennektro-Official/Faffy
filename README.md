@@ -3,7 +3,7 @@
 </p>
 
 # What This Is
-Faffy is a no-faff small and lightweight single c-file terminal emulator based on GTK written in C. It has no crazy features it's just designed to be simple and reliable. The shell it uses, all the keybinds plus custom keybinds, the font and font size it uses, and the foreground and background color and the entire ansi palette it uses is completely customizable in the *config.h*. It should work on most linux distros and was initally developed in a single day as a small side project because I always wanted a terminal emulator like this.
+Faffy is a no-faff small and lightweight single c-file terminal emulator based on GTK written in C. It has no crazy features it's just designed to be simple and reliable. The shell it uses, all the keybinds plus custom keybinds, the font and font size it uses, and the foreground and background color and the entire ansi palette it uses is completely customizable in the *config.h*. It should work on most linux distros and was initially developed in a single day as a small side project because I always wanted a terminal emulator like this.
 
 # Some Remarks
 In the default configuration **CTRL + C** and **CTRL + V** work as the standard clipboard keybinds, no need to awkwardly press shift just to paste and copy stuff. **CTRL + C** still works as a keyboard interrupt if you have no text selected. Here is an overview of all default keybinds:
@@ -19,7 +19,7 @@ In the default configuration **CTRL + C** and **CTRL + V** work as the standard 
 | CTRL + E | Exit |
 | CTRL + SHIFT + C| Clear |
 
-> Side Note: You can also define custom keybinds to run specific commands.
+> Side Note: You can also define custom keybinds to run specific commands
 
 # Building & Installing
 Make sure you have gcc and make installed on your system.  
