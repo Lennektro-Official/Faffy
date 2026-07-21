@@ -21,7 +21,7 @@ In the default configuration **CTRL + C** and **CTRL + V** work as the standard 
 
 > Side Note: You can also define custom keybinds to run specific commands
   
-You can also run faffy with -e <command> to instantly execute a command.
+You can also run faffy with -e \<command\> to instantly execute a command.
 
 # Building & Installing
 Make sure you have gcc and make installed on your system.  
