@@ -29,7 +29,7 @@ make install-dependencies
 ```
 This will install the required dependencies for most linux distros, but if your distro is not recognized you have to manually install the headers for GTK3 and VTE-2.91 for your distro.  
   
-Then make sure to customize the *config.h* to your liking and make sure that you set the shell correctly, because in the default config it is set to fish, so if you don't want to use fish change it to bash or any other shell you want to use.  
+Then make sure to customize the *config.h* to your liking.  
   
 Then just run:
 ```
