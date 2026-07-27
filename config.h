@@ -37,7 +37,7 @@ static const CommandKeybind KEYBINDS[] = {
 };
 
 // ansi color codes
-const char *ANSI_PALETTE[16] = {
+const char* ANSI_PALETTE[16] = {
   "#363333", // 0 black
   "#c51e3a", // 1 red
   "#1db169", // 2 green

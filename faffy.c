@@ -8,24 +8,24 @@
 static double font_scale = 1.0;
 
 // issue window close when shell session ended
-static void childExitedCallback(VteTerminal *terminal, gint status, gpointer user_data) {
-  GtkWidget *window = GTK_WIDGET(user_data);
+static void childExitedCallback(VteTerminal* terminal, gint status, gpointer user_data) {
+  GtkWidget* window = GTK_WIDGET(user_data);
   gtk_widget_destroy(window);
 }
 
 // updating the window title to the title outputed by the shell if it's valid and enabled in the config
 #ifdef UPDATE_WINDOW_TITLE
-static void windowTitleChangedCallback(VteTerminal *terminal, gpointer user_data) {
-  GtkWindow *window = GTK_WINDOW(user_data);
-  const char *vte_title = vte_terminal_get_window_title(terminal);
+static void windowTitleChangedCallback(VteTerminal* terminal, gpointer user_data) {
+  GtkWindow* window = GTK_WINDOW(user_data);
+  const char* vte_title = vte_terminal_get_window_title(terminal);
   if(vte_title && strlen(vte_title) > 0) gtk_window_set_title(window, vte_title);
   else gtk_window_set_title(window, WINDOW_TITLE);
 }
 #endif
 
 // handle all keybinds
-gboolean keyInputCallback(GtkWidget *widget, GdkEventKey *event, gpointer user_data) {
-  VteTerminal *terminal = VTE_TERMINAL(user_data);
+gboolean keyInputCallback(GtkWidget* widget, GdkEventKey* event, gpointer user_data) {
+  VteTerminal* terminal = VTE_TERMINAL(user_data);
   guint filtered_state = event->state & (GDK_CONTROL_MASK | GDK_SHIFT_MASK | GDK_MOD1_MASK);
 
   size_t num_binds = sizeof(KEYBINDS) / sizeof(KEYBINDS[0]);
@@ -77,20 +77,20 @@ gboolean keyInputCallback(GtkWidget *widget, GdkEventKey *event, gpointer user_d
   return FALSE;
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
   gtk_init(&argc, &argv);
 
   // window init
-  GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+  GtkWidget* window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title(GTK_WINDOW(window), WINDOW_TITLE);
   gtk_window_set_icon_name(GTK_WINDOW(window), "utilities-terminal");
   g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
 
   // create the terminal
-  GtkWidget *terminal = vte_terminal_new();
+  GtkWidget* terminal = vte_terminal_new();
 
   // setup the font
-  PangoFontDescription *font_desc = pango_font_description_new();
+  PangoFontDescription* font_desc = pango_font_description_new();
   pango_font_description_set_family(font_desc, FONT_NAME);
   pango_font_description_set_size(font_desc, FONT_SIZE * PANGO_SCALE);
   vte_terminal_set_font(VTE_TERMINAL(terminal), font_desc);
@@ -116,7 +116,7 @@ int main(int argc, char *argv[]) {
   #endif
 
   // init the shell and handle the -e option to immediately execute a command in that session
-  char **argv_shell = NULL;
+  char** argv_shell = NULL;
   if(argc >= 3 && strcmp(argv[1], "-e") == 0) {
     argv_shell = g_new0(char*, 4);
     argv_shell[0] = g_strdup(SHELL);
@@ -128,7 +128,7 @@ int main(int argc, char *argv[]) {
   }
 
   // get the environment
-  char **envv = g_get_environ();
+  char** envv = g_get_environ();
 
   // init the terminal
   vte_terminal_spawn_async(
