@@ -22,8 +22,10 @@ install-dependencies:
 
 # build the executable
 build:
-	gcc -O3 -s -fdata-sections -ffunction-sections -Wl,--gc-sections \
+	gcc -Os -s -flto -fdata-sections -ffunction-sections \
+	-Wl,--gc-sections -Wl,--build-id=none -Wl,-z,max-page-size=0x1000 \
 	faffy.c -o faffy `pkg-config --cflags --libs gtk+-3.0 vte-2.91`
+	objcopy --remove-section=.comment --remove-section=.note* faffy
 
 # install the executable and desktop file to the system
 install:
