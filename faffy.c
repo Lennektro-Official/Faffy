@@ -37,6 +37,7 @@ typedef struct {
 
 #define WINDOW_TITLE "Faffy"
 
+
 static double font_scale = 1.0;
 
 // issue window close when shell session ended
@@ -152,7 +153,7 @@ int main(int argc, char* argv[]) {
 	g_signal_connect(terminal, "child_exited", G_CALLBACK(childExitedCallback), window);
 	g_signal_connect(terminal, WINDOW_TITLE_CHANGED, G_CALLBACK(windowTitleChangedCallback), window);
 
-	// init the shell and handle the -e option to immediately execute a command in that session
+	// init the shell args and handle the -e option to immediately execute a command in that session
 	char** argv_shell = NULL;
 	if(argc >= 3 && strcmp(argv[1], "-e") == 0) {
 		argv_shell = g_new0(char*, 4);
@@ -169,24 +170,22 @@ int main(int argc, char* argv[]) {
 
 	// init the terminal
 	vte_terminal_spawn_async(
-		VTE_TERMINAL(terminal),
-		VTE_PTY_DEFAULT,
-		NULL,
-		argv_shell,
-		envv,
-		G_SPAWN_DEFAULT,
-		NULL, NULL,
-		NULL,
-		-1,
-		NULL,
-		NULL, NULL
+		VTE_TERMINAL(terminal), // terminal
+		VTE_PTY_DEFAULT,        // flags
+		NULL,                   // working dir
+		argv_shell,             // args
+		envv,                   // environment
+		G_SPAWN_DEFAULT,        // spawn flags
+		NULL, NULL, NULL,       // child setup, child setup data, child setup data destroy
+		-1,                     // timeout
+		NULL, NULL, NULL
 	);
 
 	// clean up garbage
 	g_strfreev(envv);
 	g_strfreev(argv_shell);
 
-	// add terminal instance to window
+	// add the terminal instance to the window
 	gtk_container_add(GTK_CONTAINER(window), terminal);
 	gtk_widget_show_all(window);
 
