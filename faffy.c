@@ -16,13 +16,27 @@
 #include <gdk/gdkkeysyms.h>
 #include <vte/vte.h>
 
-#include "defs.h"
+typedef enum {
+	ACTION_COMMAND,
+	ACTION_ZOOM_IN,
+	ACTION_ZOOM_OUT,
+	ACTION_ZOOM_RESET,
+	ACTION_COPY,
+	ACTION_PASTE,
+	ACTION_EXIT
+} ActionType;
+
+typedef struct {
+	guint mask;
+	guint keyval;
+	ActionType action;
+	const char *cmd;
+} CommandKeybind;
+
 #include "config.h"
 
-// the fallback window title
 #define WINDOW_TITLE "Faffy"
 
-// the font scale value for dynamically adjusting the font size
 static double font_scale = 1.0;
 
 // issue window close when shell session ended
