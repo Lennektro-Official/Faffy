@@ -35,7 +35,7 @@ typedef struct {
 
 #include "config.h"
 
-#define WINDOW_TITLE "Faffy"
+#define DEFAULT_WINDOW_TITLE "Faffy"
 
 
 static double font_scale = 1.0;
@@ -54,7 +54,7 @@ static void windowTitleChangedCallback(VteTerminal* terminal, const char* prop, 
 	GtkWindow* window = GTK_WINDOW(user_data);
 	const char* vte_title = vte_terminal_get_termprop_string(terminal, VTE_TERMPROP_XTERM_TITLE, NULL);
 	if(vte_title && strlen(vte_title) > 0) gtk_window_set_title(window, vte_title);
-	else gtk_window_set_title(window, WINDOW_TITLE);
+	else gtk_window_set_title(window, DEFAULT_WINDOW_TITLE);
 }
 #else
 #define WINDOW_TITLE_CHANGED "window-title-changed"
@@ -62,7 +62,7 @@ static void windowTitleChangedCallback(VteTerminal* terminal, gpointer user_data
 	GtkWindow* window = GTK_WINDOW(user_data);
 	const char* vte_title = vte_terminal_get_window_title(terminal);
 	if(vte_title && strlen(vte_title) > 0) gtk_window_set_title(window, vte_title);
-	else gtk_window_set_title(window, WINDOW_TITLE);
+	else gtk_window_set_title(window, DEFAULT_WINDOW_TITLE);
 }
 #endif
 
@@ -123,7 +123,7 @@ int main(int argc, char* argv[]) {
 
 	// window init
 	GtkWidget* window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-	gtk_window_set_title(GTK_WINDOW(window), WINDOW_TITLE);
+	gtk_window_set_title(GTK_WINDOW(window), DEFAULT_WINDOW_TITLE);
 	gtk_window_set_icon_name(GTK_WINDOW(window), "utilities-terminal");
 	g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
 
