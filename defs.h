@@ -1,9 +1,5 @@
 #pragma once
 
-// gtk includes
-#include <gtk/gtk.h>
-#include <gdk/gdkkeysyms.h>
-
 // what actions a keybind can perform
 typedef enum {
 	ACTION_COMMAND,

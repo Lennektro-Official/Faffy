@@ -1,8 +1,7 @@
 #pragma once
-#include "defs.h"
 
 // user shell, set this to the shell you want to use
-#define SHELL "/usr/bin/bash"
+#define SHELL "/usr/bin/fish"
 
 // default text foreground and background color
 #define FG_COLOR "#ffffff"

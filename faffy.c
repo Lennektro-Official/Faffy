@@ -1,5 +1,23 @@
-#include "config.h"
+/*
+  $$$$$$$$\  $$$$$$\  $$$$$$$$\ $$$$$$$$\ $$\     $$\ 
+  $$  _____|$$  __$$\ $$  _____|$$  _____|\$$\   $$  |
+  $$ |      $$ /  $$ |$$ |      $$ |       \$$\ $$  / 
+  $$$$$\    $$$$$$$$ |$$$$$\    $$$$$\      \$$$$  /  
+  $$  __|   $$  __$$ |$$  __|   $$  __|      \$$  /   
+  $$ |      $$ |  $$ |$$ |      $$ |          $$ |    
+  $$ |      $$ |  $$ |$$ |      $$ |          $$ |    
+  \__|      \__|  \__|\__|      \__|          \__| 
+
+    by Lennektro (2026) [MIT License]
+     a no-faff terminal emulator for linux
+*/
+
+#include <gtk/gtk.h>
+#include <gdk/gdkkeysyms.h>
 #include <vte/vte.h>
+
+#include "defs.h"
+#include "config.h"
 
 // the fallback window title
 #define WINDOW_TITLE "Faffy"
