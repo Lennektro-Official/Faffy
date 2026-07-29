@@ -178,7 +178,7 @@ int main(int argc, char* argv[]) {
 		G_SPAWN_DEFAULT,        // spawn flags
 		NULL, NULL, NULL,       // child setup, child setup data, child setup data destroy
 		-1,                     // timeout
-		NULL, NULL, NULL
+		NULL, NULL, NULL        // cancellable, callback, user data
 	);
 
 	// clean up garbage
